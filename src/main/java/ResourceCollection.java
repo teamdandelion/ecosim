@@ -1,16 +1,7 @@
-import java.util.ArrayList;
-import java.util.Collection;
-
-class ResourceCollection {
-    // n resources
-    private Collection<Long> resources;
-    private static final int N_RESOURCE_TYPES = 0;
+class ResourceCollection implements Resources {
+    private static final int N_RESOURCE_TYPES = 10;
+    private int[] resources;
     public ResourceCollection() {
-        this.resources = new ArrayList<Long>();
-        final Long INITIAL_VAL = 0L;
-        for	(int i = 0; i < N_RESOURCE_TYPES; ++i) {
-        	this.resources.add(INITIAL_VAL);
-        }
+        this.resources = new int[N_RESOURCE_TYPES];
     }
 }
-
