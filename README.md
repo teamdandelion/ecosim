@@ -3,7 +3,9 @@ ecosim
 
 Dev Setup
 =========
+Commands to generate eclipse project files, build the program, and run it:
 ```
+./gradlew --daemon --parallel eclipse
 ./gradlew --daemon --parallel build
 ./gradlew --daemon --parallel run
 ```
