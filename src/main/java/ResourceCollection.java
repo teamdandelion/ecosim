@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 class ResourceCollection {
-    // n resources
     private Collection<Long> resources;
+    // the number of different resource types
     private static final int N_RESOURCE_TYPES = 0;
     
     /**
