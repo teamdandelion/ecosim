@@ -5,6 +5,10 @@ class ResourceCollection {
     // n resources
     private Collection<Long> resources;
     private static final int N_RESOURCE_TYPES = 0;
+    
+    /**
+     * is initialized with n different resources each with value of 0
+     */
     public ResourceCollection() {
         this.resources = new ArrayList<Long>();
         final Long INITIAL_VAL = 0L;
