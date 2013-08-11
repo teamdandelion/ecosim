@@ -1,6 +1,7 @@
-build/
-.gradle
 .classpath
+.gradle
 .project
 .settings/
+.rspec
 bin/
+build/
