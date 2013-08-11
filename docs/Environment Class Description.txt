@@ -1,0 +1,76 @@
+Environemnt
+  - EnvironmentRuleset
+  - Grid parameters (how do you characterize a hexagonal toroid geometry?)
+  - 2 Grids (futureState, pastState)
+
+  fn calcNextStep() updates state
+    1. Create pool of hex pairs [pastHex, futureHex] to process
+    2. updateHex(pastHex, futureHex) for each pair
+          The pastHex is immutable, its adjacent hexes will be read using the pointers it has
+
+          The futureHex is mutable, updateHex will not touch any other futureHexes
+
+    3. For hex in futureState: hex.resolveEvents()
+          This includes resource flows, cell movement, etc
+
+  fn generateLogs() records the current state
+
+Grid
+  - Array of hex spaces
+
+Hex
+  - List of Organisms
+  - Free: ResourceCollection
+  - Locked: ResourceCollection
+  - Topography: Height for each resource
+  - Gradients: Flow rate for each resource in each direction
+    calc based on topography, modify based on cell actions(?)
+  - Pointers to adjacent hexes (convenience)
+  - Hex_Event_Handler
+
+Organism
+  - Resources: ResourceCollection
+  - Genecode
+  - AvailableActions - Represents the specific pathways available to this organism, modified by the Genecode attributes
+  - AI instance
+  fn getAction(hex[] context) returns Action
+
+Thinking of Pathway as an abstract template given in json specs, and an Action as a particular implementation of a Pathway, modified by organism genetics
+
+
+EnvironmentRuleset
+  - Resource Descriptions (mapping from name<->index, only needed to make human representable output and read from json specs)
+  - int nResources
+  - Pathways
+  - Some info about how genes can modify pathways?
+
+ResourceCollection = int[nResources]
+
+Pathway
+  - name
+  - dEnergy
+  - freeMinRequirements : ResourceCollection
+  - freeMaxRequirements : ResourceCollection
+  - ownedMinRequirements: ResourceCollection
+  - ownedMaxRequirements: ResourceCollection
+  - dLocked             : ResourceCollection
+  - dFree               : ResourceCollection
+  - dOwned              : ResourceCollection
+  - dTarget             : ResourceCollection
+  - dSelf               : ResourceCollection
+  - Events              : Event[]
+
+  isValid:
+    dLocked + dFree + dOwned == [0] * nResources
+    dTarget + dSelf == [0] * nResources
+    (conservation of matter, resource immutability)
+
+
+
+
+Enum EventTypes
+  - Move (Direction)
+  - ChangeResourceGradient (Direction)
+  - Reproduce
+
+Enum Directions

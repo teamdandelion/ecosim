@@ -1,0 +1,23 @@
+Pathway Specs:
+
+  name           : String   # The name of the pathway
+  resourceNames  : [String] # The resources referenced by the pathway
+  dEnergy        : int      # Energy gained/(lost) by the organism on activating the pathway
+
+  freeRequirements: {resourceName: [int min, int max]}
+  # Map from resource to the min, max amount that may be in the environment for the pathway to activate.
+  # The first element in the 2-array is the min, the second element is the max. 0 indicates no maximum.
+  # These resources are NOT consumed, just required as a catalyst
+
+  ownedRequirements:  {resourceName: [int min, int max]}
+  # Same as above, but applies to resources in the cell, rather than in the environment
+
+  transformations: {resourceName: [int dLocked, int dFree, int dOwned]}]
+  # Requirement: the 3 must always sum to 0 (conservation of resources)
+
+  interactions: {resourceName: [dTarget, dSelf]}
+  # Requirement: The 2 must always sum to 0 (conservation of resources)
+
+  events: [events]
+  # Examples of events: Reproduce, move to an adjacent cell, temporarily alter the resource gradient / push resources to an adjcaent cell
+
