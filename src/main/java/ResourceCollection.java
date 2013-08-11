@@ -1,9 +1,6 @@
 class ResourceCollection implements Resources {
-    private static final int N_RESOURCE_TYPES = 10;
-    // Shouldn't be defined in code, keep refernece to the
-    // EnvironmentSpecification variable
     private int[] resources;
-    public ResourceCollection() {
-        this.resources = new int[N_RESOURCE_TYPES]; // initialized to 0
+    public ResourceCollection(int N_TYPES) {
+        this.resources = new int[N_TYPES]; // initialized to 0
     }
 }
