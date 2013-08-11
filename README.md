@@ -9,3 +9,12 @@ gem install bundler
 bundle
 bundle exec rake run
 ```
+Run tests:
+```
+rake task
+```
+or through bundler:
+```
+bundle exec rake task
+```
+
